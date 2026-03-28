@@ -1,0 +1,13 @@
+ID,Doctor_name,Specialisation,Experience,Contant_No,Status,Dept_ID
+
+Doc-01, Ramila, Cardiologist, 8, 9037829190, Active, D01
+Doc-02, Priyanka, Cadiologist, 6, 1178930213, Active, D01
+Doc-03, Sandhya, Cadiologist, 5, 8957483921, Active, D01
+Doc-04, Anu, Cardiologist, 3, 8936728192, Active, D01
+
+Doc-05, Sudhesh, Neurologist, 10, 6728192618, Active, D03
+Doc-06, Jai, Neurologist, 11, 5678954323, Active, D03
+
+Doc-07, Hari, ENT, 12, 9037829123, Active, D02
+
+Doc-08, Vidhya, Psychiatrist, 16, 7849202383, Active, D05

@@ -1,0 +1,29 @@
+{
+  "name": "ThirdPartyAPI",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^4.5.1",
+    "@sap-cloud-sdk/resilience": "^4.5.1",
+    "@sap/cds": "^9",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "jsonplaceholder": {
+        "kind": "rest",
+        "credentials": {
+          "url": "https://jsonplaceholder.typicode.com",
+          "requestTimeout": 10000
+        }
+      }
+    }
+  }
+}

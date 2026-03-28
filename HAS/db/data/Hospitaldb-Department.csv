@@ -1,0 +1,8 @@
+ID,name,floor_no,No_Of_Doctors,No_Of_Nurse,HospialID_ID
+
+
+D01, Cardiologist, 3,  10, 40, H01
+D02, ENT, 3,  40,20, H01
+D03, Neurology, 2, 10, 10, H01
+D04, Gastroenterology, 1,  5, 10, H01
+D05, Psychiatry, 1,  20, 30, H01

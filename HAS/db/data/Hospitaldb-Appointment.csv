@@ -1,0 +1,4 @@
+ID,Date,Time,Status,Type,Consultation_Fee,docID_ID,PatID_ID
+
+Ap01, 2026-02-28, 10:30, Booked, General, 200, Doc-01, P01
+Ap02, 2026-02-29, 11:30, Booked, General, 200, Doc-02, P02

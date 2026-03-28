@@ -1,0 +1,3 @@
+Vehicle_ID,Model_Name,Price,Status,Dealer_Reference_Dealers_ID,State_Reference_State_ID
+V-01, Honda, 100000, Not Assigned, D-01, S-01
+V-02, Vespa, 150000, Not Assigned, D-01, S-01

@@ -1,0 +1,1123 @@
+{
+ "meta": {
+  "creator": "cds-dk 9.6.1"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "API_ORDER_BILL_OF_MATERIAL_SRV": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true",
+   "@sap.message.scope.supported": "true",
+   "@sap.supported.formats": "atom json xlsx"
+  },
+  "API_ORDER_BILL_OF_MATERIAL_SRV.A_BOMItemCategory": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.creatable": "false",
+   "@sap.updatable": "false",
+   "@sap.deletable": "false",
+   "@sap.content.version": "1",
+   "@sap.label": "Item Category",
+   "elements": {
+    "BillOfMaterialItemCategory": {
+     "key": true,
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Item Category",
+     "@sap.quickinfo": "Item category (bill of material)",
+     "notNull": true
+    },
+    "FixedItemCategory": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Item Category",
+     "@sap.quickinfo": "Item category (bill of material)"
+    },
+    "BillOfMaterialItemCategoryDesc": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.label": "Item Category",
+     "@sap.quickinfo": "Item Category Description"
+    },
+    "to_BOMItemCategoryText": {
+     "type": "cds.Association",
+     "target": "API_ORDER_BILL_OF_MATERIAL_SRV.A_BOMItemCategoryText",
+     "keys": []
+    }
+   }
+  },
+  "API_ORDER_BILL_OF_MATERIAL_SRV.A_BOMItemCategoryText": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.creatable": "false",
+   "@sap.updatable": "false",
+   "@sap.deletable": "false",
+   "@sap.content.version": "1",
+   "@sap.label": "Item Category Description",
+   "elements": {
+    "Language": {
+     "key": true,
+     "type": "cds.String",
+     "length": 2,
+     "@sap.label": "Language Key",
+     "notNull": true
+    },
+    "BillOfMaterialItemCategory": {
+     "key": true,
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Item Category",
+     "@sap.quickinfo": "Item category (bill of material)",
+     "notNull": true
+    },
+    "BillOfMaterialItemCategoryDesc": {
+     "type": "cds.String",
+     "length": 30,
+     "@sap.label": "Item Category",
+     "@sap.quickinfo": "Item Category Description"
+    }
+   }
+  },
+  "API_ORDER_BILL_OF_MATERIAL_SRV.SalesOrderBOMItem": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.content.version": "1",
+   "@sap.deletable.path": "Delete_mc",
+   "@sap.updatable.path": "Update_mc",
+   "@sap.label": "Item",
+   "elements": {
+    "BillOfMaterial": {
+     "key": true,
+     "type": "cds.String",
+     "length": 8,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Bill of Material",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "BillOfMaterialCategory": {
+     "key": true,
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "BOM category",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "BillOfMaterialVariant": {
+     "key": true,
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Alternative BOM",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "BillOfMaterialItemNodeNumber": {
+     "key": true,
+     "type": "cds.String",
+     "length": 8,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Item node",
+     "@sap.quickinfo": "BOM item node number",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "HeaderChangeDocument": {
+     "key": true,
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Change Number",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "Material": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Material",
+     "@sap.quickinfo": "Material Number",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "Plant": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Plant",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "DeleteBOMItemWithChangeNumber_ac": {
+     "type": "cds.Boolean",
+     "@sap.label": "Dyn. Action Control",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false"
+    },
+    "Delete_mc": {
+     "type": "cds.Boolean",
+     "@sap.label": "Dyn. Method Control",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false"
+    },
+    "Update_mc": {
+     "type": "cds.Boolean",
+     "@sap.label": "Dyn. Method Control",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false"
+    },
+    "BillOfMaterialVariantUsage": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "BOM Usage"
+    },
+    "BillOfMaterialItemUUID": {
+     "type": "cds.UUID",
+     "@sap.label": "ID item chge status",
+     "@sap.quickinfo": "Global identification of an item's change status"
+    },
+    "BOMItemInternalChangeCount": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Counter",
+     "@sap.quickinfo": "Internal counter"
+    },
+    "ValidityStartDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Valid From",
+     "@sap.quickinfo": "Valid-From Date"
+    },
+    "ValidityEndDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Valid to",
+     "@sap.quickinfo": "Valid-to date"
+    },
+    "EngineeringChangeDocForEdit": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Change Number"
+    },
+    "EngineeringChangeDocument": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Change Number"
+    },
+    "ChgToEngineeringChgDocument": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Change Number To"
+    },
+    "InheritedNodeNumberForBOMItem": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Item node",
+     "@sap.quickinfo": "Inherited node number of BOM item"
+    },
+    "BOMItemRecordCreationDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Created On",
+     "@sap.quickinfo": "Date Record Created On"
+    },
+    "BOMItemCreatedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Created By",
+     "@sap.quickinfo": "User Who Created Record"
+    },
+    "BOMItemLastChangeDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Changed On",
+     "@sap.quickinfo": "Last Changed On"
+    },
+    "BOMItemLastChangedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Changed By",
+     "@sap.quickinfo": "Name of Person Who Changed Object"
+    },
+    "BillOfMaterialComponent": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Component",
+     "@sap.quickinfo": "BOM component"
+    },
+    "BillOfMaterialItemCategory": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Item Category",
+     "@sap.quickinfo": "Item category (bill of material)"
+    },
+    "BillOfMaterialItemNumber": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Item Number",
+     "@sap.quickinfo": "BOM Item Number"
+    },
+    "BillOfMaterialItemUnit": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.label": "Component UoM",
+     "@sap.quickinfo": "Component Unit of Measure",
+     "@sap.semantics": "unit-of-measure"
+    },
+    "BillOfMaterialItemQuantity": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.unit": "BillOfMaterialItemUnit",
+     "@sap.label": "Component Quantity"
+    },
+    "IsAssembly": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Single-Character Flag",
+     "@sap.heading": ""
+    },
+    "IsSubItem": {
+     "type": "cds.Boolean",
+     "@sap.label": "Sub-item indicator",
+     "@sap.quickinfo": "Indicator: sub-items exist"
+    },
+    "BOMItemSorter": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Sort String"
+    },
+    "BOMItemHasFixedQuantity": {
+     "type": "cds.Boolean",
+     "@sap.label": "Fixed Quantity"
+    },
+    "PurchasingGroup": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Purchasing Group"
+    },
+    "Currency": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Currency",
+     "@sap.quickinfo": "Currency Key",
+     "@sap.semantics": "currency-code"
+    },
+    "MaterialComponentPrice": {
+     "type": "cds.Decimal",
+     "precision": 12,
+     "scale": 3,
+     "@sap.unit": "Currency",
+     "@sap.label": "Price"
+    },
+    "IdentifierBOMItem": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Item identification",
+     "@sap.quickinfo": "External identification of an item"
+    },
+    "MaterialPriceUnitQty": {
+     "type": "cds.Decimal",
+     "precision": 5,
+     "scale": 0,
+     "@sap.unit": "BillOfMaterialItemUnit",
+     "@sap.label": "Price Unit"
+    },
+    "ComponentScrapInPercent": {
+     "type": "cds.Decimal",
+     "precision": 5,
+     "scale": 2,
+     "@sap.label": "Component Scrap (%)",
+     "@sap.quickinfo": "Component Scrap in Percent"
+    },
+    "OperationScrapInPercent": {
+     "type": "cds.Decimal",
+     "precision": 5,
+     "scale": 2,
+     "@sap.label": "Operation Scrap in %",
+     "@sap.quickinfo": "Operation Scrap"
+    },
+    "IsNetScrap": {
+     "type": "cds.Boolean",
+     "@sap.label": "Net Scrap Indicator"
+    },
+    "NumberOfVariableSizeItem": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.unit": "BillOfMaterialItemUnit"
+    },
+    "QuantityVariableSizeItem": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.unit": "BillOfMaterialItemUnit",
+     "@sap.label": "VSI Quantity per PC",
+     "@sap.quickinfo": "Variable-Size Item Quantity per Piece (PC)"
+    },
+    "FormulaKey": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "VSI Formula",
+     "@sap.quickinfo": "Formula Key for Variable-Size Items"
+    },
+    "ComponentDescription": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Object description",
+     "@sap.quickinfo": "Object description (item)"
+    },
+    "BOMItemDescription": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Item Text",
+     "@sap.quickinfo": "BOM Item Text (Line 1)"
+    },
+    "BOMItemText2": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Item Text 2",
+     "@sap.quickinfo": "BOM Item Text (Line 2)"
+    },
+    "MaterialGroup": {
+     "type": "cds.String",
+     "length": 9,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Material Group"
+    },
+    "DocumentType": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Document Type"
+    },
+    "DocNumber": {
+     "type": "cds.String",
+     "length": 25,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Document",
+     "@sap.quickinfo": "Document Number"
+    },
+    "DocumentVersion": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Document Version"
+    },
+    "DocumentPart": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Document Part"
+    },
+    "ClassNumber": {
+     "type": "cds.String",
+     "length": 18,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Class",
+     "@sap.quickinfo": "Class number"
+    },
+    "ClassType": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Class Type"
+    },
+    "ResultingItemCategory": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Res. item category",
+     "@sap.quickinfo": "Resulting item category"
+    },
+    "DependencyObjectNumber": {
+     "type": "cds.String",
+     "length": 18,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Assignment number",
+     "@sap.quickinfo": "Number of Object with Assigned Dependencies"
+    },
+    "ObjectType": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Object Type",
+     "@sap.quickinfo": "Object type (BOM item)"
+    },
+    "IsClassificationRelevant": {
+     "type": "cds.Boolean",
+     "@sap.label": "as selection cond.",
+     "@sap.quickinfo": "Indicator: classification as selection condition"
+    },
+    "IsBulkMaterial": {
+     "type": "cds.Boolean",
+     "@sap.label": "Bulk Material",
+     "@sap.quickinfo": "Indicator: Bulk Material"
+    },
+    "BOMItemIsSparePart": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Spare Part Indicator",
+     "@sap.quickinfo": "Indicator: Spare Part"
+    },
+    "BOMItemIsSalesRelevant": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Relevant to sales",
+     "@sap.quickinfo": "Indicator: item relevant to sales"
+    },
+    "IsProductionRelevant": {
+     "type": "cds.Boolean",
+     "@sap.label": "Production relevant",
+     "@sap.quickinfo": "Indicator: item relevant to production"
+    },
+    "BOMItemIsPlantMaintRelevant": {
+     "type": "cds.Boolean",
+     "@sap.label": "Plant maintenance",
+     "@sap.quickinfo": "Indicator: item relevant to plant maintenance"
+    },
+    "BOMItemIsCostingRelevant": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Relevancy to costing",
+     "@sap.quickinfo": "Indicator for relevancy to costing"
+    },
+    "IsEngineeringRelevant": {
+     "type": "cds.Boolean",
+     "@sap.label": "Engineering/design",
+     "@sap.quickinfo": "Indicator: item relevant to engineering"
+    },
+    "SpecialProcurementType": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Special Procurement",
+     "@sap.quickinfo": "Special Procurement Type for BOM Item"
+    },
+    "IsBOMRecursiveAllowed": {
+     "type": "cds.Boolean",
+     "@sap.label": "Recurs. allowed",
+     "@sap.quickinfo": "Indicator: recursiveness allowed"
+    },
+    "OperationLeadTimeOffset": {
+     "type": "cds.Decimal",
+     "precision": 3,
+     "scale": 0,
+     "@sap.label": "Oper. LT offset",
+     "@sap.quickinfo": "Lead-time offset for operation"
+    },
+    "OpsLeadTimeOffsetUnit": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.label": "Operation LTO unit",
+     "@sap.quickinfo": "Unit for lead-time offset for operation",
+     "@sap.semantics": "unit-of-measure"
+    },
+    "IsMaterialProvision": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Mat. Provision Ind.",
+     "@sap.quickinfo": "Material Provision Indicator"
+    },
+    "BOMIsRecursive": {
+     "type": "cds.Boolean",
+     "@sap.label": "Recursive",
+     "@sap.quickinfo": "Indicator: BOM is recursive"
+    },
+    "DocumentIsCreatedByCAD": {
+     "type": "cds.Boolean",
+     "@sap.label": "CAD Indicator"
+    },
+    "DistrKeyCompConsumption": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Distribution key",
+     "@sap.quickinfo": "Distribution key for component consumption"
+    },
+    "DeliveryDurationInDays": {
+     "type": "cds.Decimal",
+     "precision": 3,
+     "scale": 0,
+     "@sap.label": "Delivery time (days)",
+     "@sap.quickinfo": "Delivery time in days"
+    },
+    "Creditor": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Supplier",
+     "@sap.quickinfo": "Account Number of Supplier"
+    },
+    "CostElement": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Cost element"
+    },
+    "Size1": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.unit": "UnitOfMeasureForSize1To3",
+     "@sap.label": "Size 1"
+    },
+    "Size2": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.unit": "UnitOfMeasureForSize1To3",
+     "@sap.label": "Size 2"
+    },
+    "Size3": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.unit": "UnitOfMeasureForSize1To3",
+     "@sap.label": "Size 3"
+    },
+    "UnitOfMeasureForSize1To3": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.label": "Size unit",
+     "@sap.quickinfo": "Unit of measure for sizes 1 to 3",
+     "@sap.semantics": "unit-of-measure"
+    },
+    "GoodsReceiptDuration": {
+     "type": "cds.Decimal",
+     "precision": 3,
+     "scale": 0,
+     "@sap.label": "GR processing time",
+     "@sap.quickinfo": "Goods receipt processing time in days"
+    },
+    "PurchasingOrganization": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Purch. Organization",
+     "@sap.quickinfo": "Purchasing Organization"
+    },
+    "RequiredComponent": {
+     "type": "cds.Boolean",
+     "@sap.label": "Required Component"
+    },
+    "MultipleSelectionAllowed": {
+     "type": "cds.Boolean",
+     "@sap.label": "Multiple Selection",
+     "@sap.quickinfo": "Multiple Selection Allowed"
+    },
+    "ProdOrderIssueLocation": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Storage Location",
+     "@sap.quickinfo": "Issue Location for Production Order"
+    },
+    "MaterialIsCoProduct": {
+     "type": "cds.Boolean",
+     "@sap.label": "Co-product",
+     "@sap.quickinfo": "Indicator: co-product"
+    },
+    "ExplosionType": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Explosion type"
+    },
+    "AlternativeItemGroup": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "AltItemGroup",
+     "@sap.quickinfo": "Alternative item: group"
+    },
+    "AlternativeItemPriority": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Priority",
+     "@sap.quickinfo": "Alternative item: ranking order"
+    },
+    "AlternativeItemStrategy": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Strategy",
+     "@sap.quickinfo": "Alternative item: strategy"
+    },
+    "UsageProbabilityPercent": {
+     "type": "cds.Decimal",
+     "precision": 3,
+     "scale": 0,
+     "@sap.label": "Usage Probability",
+     "@sap.quickinfo": "Usage Probability in % (Alternative Item)"
+    },
+    "FollowUpGroup": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Follow-up group"
+    },
+    "DiscontinuationGroup": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Discont. group",
+     "@sap.quickinfo": "Discontinuation group"
+    },
+    "IsConfigurableBOM": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Selection indicator",
+     "@sap.quickinfo": "Selection indicator for configurable BOMs"
+    },
+    "ReferencePoint": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Reference point",
+     "@sap.quickinfo": "Reference point for BOM transfer"
+    },
+    "LeadTimeOffset": {
+     "type": "cds.Decimal",
+     "precision": 3,
+     "scale": 0,
+     "@sap.label": "Lead-time offset"
+    },
+    "ProductionSupplyArea": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Prodn Supply Area",
+     "@sap.quickinfo": "Production Supply Area"
+    },
+    "IsDeleted": {
+     "type": "cds.Boolean",
+     "@sap.label": "Deletion Indicator"
+    },
+    "IsALE": {
+     "type": "cds.Boolean",
+     "@sap.label": "ALE indicator"
+    },
+    "LastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@odata.Precision": 7,
+     "@sap.label": "Time Stamp",
+     "@sap.quickinfo": "UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"
+    },
+    "SalesOrder": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Sales Order"
+    },
+    "SalesOrderItem": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Item",
+     "@sap.quickinfo": "Sales Order Item"
+    },
+    "to_BOMItemCategory": {
+     "type": "cds.Association",
+     "target": "API_ORDER_BILL_OF_MATERIAL_SRV.A_BOMItemCategory",
+     "keys": []
+    },
+    "to_BillOfMaterial": {
+     "type": "cds.Association",
+     "target": "API_ORDER_BILL_OF_MATERIAL_SRV.SalesOrderBOM",
+     "keys": []
+    }
+   },
+   "actions": {
+    "DeleteBOMItemWithChangeNumber": {
+     "kind": "action",
+     "params": {
+      "EngineeringChangeDocForEdit": {
+       "type": "cds.String",
+       "length": 12,
+       "@sap.label": "Change Number"
+      }
+     },
+     "returns": {
+      "type": "API_ORDER_BILL_OF_MATERIAL_SRV.DummyFunctionImportResult"
+     }
+    }
+   }
+  },
+  "API_ORDER_BILL_OF_MATERIAL_SRV.SalesOrderBOM": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.content.version": "1",
+   "@sap.deletable.path": "Delete_mc",
+   "@sap.updatable.path": "Update_mc",
+   "@sap.label": "Bill of Material",
+   "elements": {
+    "BillOfMaterialCategory": {
+     "key": true,
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "BOM category",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "BillOfMaterial": {
+     "key": true,
+     "type": "cds.String",
+     "length": 8,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Bill of Material",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "BillOfMaterialVariant": {
+     "key": true,
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Alternative BOM",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "EngineeringChangeDocument": {
+     "key": true,
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Change Number",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "Material": {
+     "key": true,
+     "type": "cds.String",
+     "length": 40,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Material",
+     "@sap.quickinfo": "Material Number",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "Plant": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Plant",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "notNull": true
+    },
+    "DeleteBOMHdrWithChangeNumber_ac": {
+     "type": "cds.Boolean",
+     "@sap.label": "Dyn. Action Control",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false"
+    },
+    "Delete_mc": {
+     "type": "cds.Boolean",
+     "@sap.label": "Dyn. Method Control",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false"
+    },
+    "Update_mc": {
+     "type": "cds.Boolean",
+     "@sap.label": "Dyn. Method Control",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false"
+    },
+    "to_BillOfMaterialItem_oc": {
+     "type": "cds.Boolean",
+     "@sap.label": "Dynamic CbA-Control",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false"
+    },
+    "SalesOrder": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Sales Order"
+    },
+    "SalesOrderItem": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Item",
+     "@sap.quickinfo": "Sales Order Item"
+    },
+    "EngineeringChangeDocForEdit": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Change Number"
+    },
+    "LastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@odata.Precision": 7,
+     "@sap.label": "Time Stamp",
+     "@sap.quickinfo": "UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)"
+    },
+    "BillOfMaterialHeaderUUID": {
+     "type": "cds.UUID",
+     "@sap.label": "ID hdr chge status",
+     "@sap.quickinfo": "Global identification of a BOM header change status"
+    },
+    "BillOfMaterialVariantUsage": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "BOM Usage"
+    },
+    "ValidityStartDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Valid From",
+     "@sap.quickinfo": "Valid-From Date"
+    },
+    "ValidityEndDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Valid to",
+     "@sap.quickinfo": "Valid-to date"
+    },
+    "BOMHeaderInternalChangeCount": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Counter",
+     "@sap.quickinfo": "Internal counter"
+    },
+    "BOMHeaderText": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "BOM Description"
+    },
+    "BOMUsagePriority": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Selection priority",
+     "@sap.quickinfo": "CIM priority for selection ID"
+    },
+    "BillOfMaterialAuthsnGrp": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Authorization group",
+     "@sap.quickinfo": "Authorization group for bills of material"
+    },
+    "BOMTechnicalType": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Technical type"
+    },
+    "BOMGroup": {
+     "type": "cds.String",
+     "length": 18,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "BOM group"
+    },
+    "BOMAlternativeText": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Alternative Text",
+     "@sap.quickinfo": "Alternative BOM Text"
+    },
+    "BillOfMaterialStatus": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "BOM Status",
+     "@sap.quickinfo": "Bill of Material Status"
+    },
+    "ChgToEngineeringChgDocument": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Change Number To"
+    },
+    "IsMarkedForDeletion": {
+     "type": "cds.Boolean",
+     "@sap.label": "Deletion Indicator"
+    },
+    "BOMIsArchivedForDeletion": {
+     "type": "cds.Boolean",
+     "@sap.label": "Deletion Flag",
+     "@sap.quickinfo": "Deletion flag for BOMs"
+    },
+    "IsConfiguredMaterial": {
+     "type": "cds.Boolean",
+     "@sap.label": "Configurable BOM",
+     "@sap.quickinfo": "Indicator: configurable BOM"
+    },
+    "BOMIsConfigurable": {
+     "type": "cds.Boolean",
+     "@sap.label": "Configurable BOM",
+     "@sap.quickinfo": "Indicator: configurable BOM"
+    },
+    "IsALE": {
+     "type": "cds.Boolean",
+     "@sap.label": "ALE indicator"
+    },
+    "BOMHeaderBaseUnit": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.label": "Base Unit of Measure",
+     "@sap.quickinfo": "Base Unit of Measure for BOM",
+     "@sap.semantics": "unit-of-measure"
+    },
+    "BOMHeaderQuantityInBaseUnit": {
+     "type": "cds.Decimal",
+     "precision": 13,
+     "scale": 3,
+     "@sap.unit": "BOMHeaderBaseUnit",
+     "@sap.label": "Base quantity"
+    },
+    "RecordCreationDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Created On",
+     "@sap.quickinfo": "Date Record Created On"
+    },
+    "LastChangeDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Changed On",
+     "@sap.quickinfo": "Last Changed On"
+    },
+    "LastChangedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Changed By",
+     "@sap.quickinfo": "Name of Person Who Changed Object"
+    },
+    "CreatedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Created By",
+     "@sap.quickinfo": "User Who Created Record"
+    },
+    "BOMIsToBeDeleted": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Handling Del. Flag",
+     "@sap.quickinfo": "Handling Deletion Flag During BOM Explosion"
+    },
+    "DocumentIsCreatedByCAD": {
+     "type": "cds.Boolean",
+     "@sap.label": "CAD Indicator"
+    },
+    "LaboratoryOrDesignOffice": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Lab/Office",
+     "@sap.quickinfo": "Laboratory/Design Office"
+    },
+    "BOMAssetNtwkHndovrIsRelevant": {
+     "type": "cds.Boolean",
+     "@sap.label": "BOM to AIN Handover",
+     "@sap.quickinfo": "Relevant for BOM to AIN Handover"
+    },
+    "to_BillOfMaterialItem": {
+     "type": "cds.Composition",
+     "target": "API_ORDER_BILL_OF_MATERIAL_SRV.SalesOrderBOMItem",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": []
+    }
+   },
+   "actions": {
+    "DeleteBOMHdrWithChangeNumber": {
+     "kind": "action",
+     "params": {
+      "EngineeringChangeDocForEdit": {
+       "type": "cds.String",
+       "length": 12,
+       "@sap.label": "Change Number"
+      }
+     },
+     "returns": {
+      "type": "API_ORDER_BILL_OF_MATERIAL_SRV.DummyFunctionImportResult"
+     }
+    }
+   }
+  },
+  "API_ORDER_BILL_OF_MATERIAL_SRV.DummyFunctionImportResult": {
+   "kind": "type",
+   "@cds.external": true,
+   "elements": {
+    "IsInvalid": {
+     "type": "cds.Boolean",
+     "@sap.label": "TRUE"
+    }
+   }
+  }
+ }
+}

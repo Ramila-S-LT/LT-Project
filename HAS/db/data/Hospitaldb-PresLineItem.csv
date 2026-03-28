@@ -1,0 +1,5 @@
+ID,Medicine_Name,Frequency,Duration_Days,Instructions,quantity,prescription_ID,medicine_ID
+
+PL-01, Acetaminophen, Twice, 5, Before Food, 10, Pres-01, M-01
+PL-02, Adderall, Once, 5, Before Food, 5, Pres-01, M-02
+Pl-03, Amitriptyline, Twice, 5, After food, 10, Pres-01, M-03 

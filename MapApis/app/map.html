@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> MAP API PROJECT </title>
+    </head>
+    
+    <body>
+        <h1> MAP API PROJECT </h1>
+
+        <label>Enter the Pincode </label>
+        <input type="text" name="pincodeInput" id="pincode"></input>
+        
+        <button onclick="getDetails()">Search</button>
+
+        <br><br>
+        <iframe 
+            src="https://www.google.com/maps/embed"
+            width="100%" 
+            height="450",
+            allowfullscreen="true">
+        </iframe>
+
+        <script>
+                
+           async function getDetails() {
+                const getpincode = document.getElementById("pincode").value;
+                console.log(getpincode);
+
+               const url = await fetch(`/odata/v4/mapapi/getMapDetails(pincode='${getpincode}')`);
+
+
+
+                const data = await url.json();
+                console.log(data);
+
+                console.log(data.lan);
+                console.log(data.log);
+                 console.log(data.boundingbox[0]);
+                
+                
+            const mapFrame = document.querySelector("iframe");
+            mapFrame.src = `https://www.google.com/maps?q=${data.lan},${data.log}&output=embed`;
+                
+            
+
+        } 
+
+        </script>
+
+    </body>
+
+
+</html>
