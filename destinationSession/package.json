@@ -1,0 +1,41 @@
+{
+  "name": "destinationSession",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@cap-js/hana": "^2.7.0",
+    "@sap-cloud-sdk/http-client": "^4.5.1",
+    "@sap-cloud-sdk/resilience": "^4.5.1",
+    "@sap/cds": "^9",
+    "@sap/xsenv": "^6.2.0",
+    "express": "^4",
+    "sqlite": "^5.1.1"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9.8.3"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "MapAPI": {
+        "kind": "odata-v4",
+        "credentials": {
+          "destination": "MapDetails"
+        }
+      },
+      "ForecastAPI": {
+        "kind": "odata-v4",
+        "credentials": {
+          "destination": "Forecast"
+        }
+      },
+      "auth": {
+        "kind": "mocked"
+      }
+    }
+  }
+}
