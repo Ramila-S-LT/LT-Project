@@ -1,0 +1,33 @@
+{
+  "xsappname": "xsuaa-sample-auth",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Riskviewer",
+      "description": "Riskviewer"
+    },
+    {
+      "name": "$XSAPPNAME.RiskManager",
+      "description": "RiskManager"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "Riskviewer",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.Riskviewer"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "RiskManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.RiskManager"
+      ],
+      "attribute-references": []
+    }
+  ]
+}

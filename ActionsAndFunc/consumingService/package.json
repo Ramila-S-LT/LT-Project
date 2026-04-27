@@ -1,0 +1,41 @@
+{
+  "name": "consumingService",
+  "version": "1.0.0",
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^4.6.0",
+    "@sap-cloud-sdk/http-client": "^4.6.0",
+    "@sap-cloud-sdk/resilience": "^4.6.0",
+    "@sap/cds": "^9"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_BUSINESS_PARTNER",
+        
+        "[sandbox]": {
+          "credentials": {
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER",
+            "headers": {
+              "APIKey" : "cI66dPY4G8JUfL6ABM0KeVuHNESPmOfL"
+            }
+          }
+        }
+      },
+
+      "MAPAPI" : {
+        "kind" : "rest",
+        "credentials": {
+          "url": "http://api.geonames.org"
+        }
+      }
+    }
+  }
+}

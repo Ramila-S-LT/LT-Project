@@ -1,0 +1,28 @@
+{
+  "name": "DestSideBySide",
+  "version": "1.0.0",
+  "dependencies": {
+    "@sap/cds": "^9",
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "API_MAINTENANCEITEM": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_MAINTENANCEITEM",
+          "credentials": {
+            "destination": "SideBySide"
+          }
+        }
+      }
+    }
+  }
