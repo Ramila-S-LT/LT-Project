@@ -1,0 +1,12 @@
+ID,productName,unitPrice,stock,rating
+
+P001,Laptop,75000,50, 5
+P002,Smartphone,15000,120, 3
+P003,Headphones,15000,200, 2
+P004,Keyboard,5000,150, 3
+P005,Mouse,10000,180, 4
+P006,Monitor,6000,75, 3
+P007,Tablet,11000,90,3
+P008,Printer,9000,60,2
+P009,Camera,35000,40,4
+P010,Speaker,20000,130,5
